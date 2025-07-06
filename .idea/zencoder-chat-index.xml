@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ai.zencoder.plugin.chat.index">
+    <option name="chatMetadata" value="{&quot;a676df9b-c4e4-42ba-8a60-08e4e456197c&quot;:{&quot;id&quot;:&quot;a676df9b-c4e4-42ba-8a60-08e4e456197c&quot;,&quot;title&quot;:&quot;Testing Home Method in React&quot;,&quot;createdAt&quot;:1751763085960,&quot;updatedAt&quot;:1751763137960,&quot;isAgent&quot;:true,&quot;isUnitTestsAgent&quot;:true,&quot;isNameGenerated&quot;:true,&quot;messageCount&quot;:2,&quot;lastMessagePreview&quot;:&quot;I'll help you generate tests for the Home method. Let me first search for the Home method in the cod...&quot;}}" />
+  </component>
+</project>
