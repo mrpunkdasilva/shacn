@@ -11,12 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import {Button} from "@/components/ui/button";
 import {ModeToggle} from "@/components/ui/mode-toggle";
+import {SidebarTrigger} from "@/components/ui/sidebar";
 
 export const Navbar = () => {
   return (
     <nav className={"flex items-center justify-between p-4"}>
       {/*LEFT*/}
-      collapseButton
+      <SidebarTrigger/>
 
       {/*Right*/}
       <div className="flex items-center gap-4">
@@ -45,17 +46,6 @@ export const Navbar = () => {
             <DropdownMenuItem>
               <LogOut className={"h-[1.2rem] w-[1.2rem] mr-2"}/> Logout
             </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size={"icon"}>
-              <SquareMenu/>
-              <span className={"sr-only"}>Open Menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent sideOffset={15}>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
