@@ -1,5 +1,6 @@
 import {AppBarChart, AppAreaChart, AppPieChart} from "@/components/charts";
 import {CardList} from "@/components/CardList";
+import TodoList from "@/components/ToDoList";
 
 export default function HomePage() {
   return (
@@ -13,7 +14,9 @@ export default function HomePage() {
       <div className="bg-primary-foreground p-4 rounted-lg">
         <AppPieChart/>
       </div>
-      <div className="bg-primary-foreground p-4 rounted-lg">Test</div>
+      <div className="bg-primary-foreground p-4 rounted-lg">
+        <TodoList/>
+      </div>
       <div className="bg-primary-foreground p-4 rounted-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2">
         <AppAreaChart/>
       </div>

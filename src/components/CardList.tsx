@@ -1,5 +1,7 @@
+"use client";
+
 import {LATEST_TRANSACTIONS, POPULAR_CONTENT} from "@/components/card-list";
-import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardFooter, CardTitle} from "@/components/ui/card";
 import Image from "next/image";
 import {Badge} from "lucide-react";
 
