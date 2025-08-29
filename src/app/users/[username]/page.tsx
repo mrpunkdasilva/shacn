@@ -1,4 +1,4 @@
-export const SingleUserPage = () => {
+export const UserPage = () => {
   return(
     <div className={""}>
       Users Page
