@@ -1,4 +1,4 @@
-import {LogOut, Moon, Settings, User} from "lucide-react";
+import {LogOut, Moon, Settings, SquareMenu, User} from "lucide-react";
 import Link from "next/link";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar"
 import {
@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {Button} from "@/components/ui/button";
 
 export const Navbar = () => {
   return (
@@ -29,12 +30,9 @@ export const Navbar = () => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
-
           <DropdownMenuContent sideOffset={15}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
-
             <DropdownMenuSeparator/>
-
             <DropdownMenuItem>
               <User className={"h-[1.2rem] w-[1.2rem] mr-2"}/> Profile
             </DropdownMenuItem>
@@ -47,6 +45,16 @@ export const Navbar = () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
+         <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size={"icon"}>
+              <SquareMenu />
+              <span className={"sr-only"}>Open Menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent sideOffset={15}>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   )
