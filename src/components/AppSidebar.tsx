@@ -1,16 +1,17 @@
 import {
   Sidebar,
-  SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
+  SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
+  SidebarMenu, SidebarMenuBadge,
   SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem,
 
 } from "./ui/sidebar";
 import Link from "next/link";
 import {SIDEBAR_ITEMS} from "@/data/sidebar-items";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
-import {ChevronUp, User2} from "lucide-react";
+import {ChevronDown, ChevronUp, Plus, Projector, User2} from "lucide-react";
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "./ui/collapsible";
 
 const AppSidebar = () => {
   return (
@@ -20,7 +21,8 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href={"/"}>
-                <img className={"rounded-full"} src={"https://avatars.githubusercontent.com/u/70487766?v=4"} alt={"Punk"} height={50} width={50} />
+                <img className={"rounded-full"} src={"https://avatars.githubusercontent.com/u/70487766?v=4"}
+                     alt={"Punk"} height={50} width={50}/>
                 Punk
               </Link>
             </SidebarMenuButton>
@@ -43,6 +45,7 @@ const AppSidebar = () => {
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
+                    {item.title === "Inbox" && (<SidebarMenuBadge>24</SidebarMenuBadge>)}
                   </SidebarMenuItem>
                 ))
               }
@@ -52,66 +55,99 @@ const AppSidebar = () => {
 
         <SidebarGroup>
           <SidebarGroupLabel>
-            App
+            Projects
+            <SidebarGroupAction>
+              <Plus/> <span className={"sr-only"}>Add Project</span>
+            </SidebarGroupAction>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {
-                SIDEBAR_ITEMS.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <item.icon/>
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))
-              }
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/#"}>
+                    <Projector/>
+                    See All Projects
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/#"}>
+                    <Projector/>
+                    See All Projects
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>
-            App
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {
-                SIDEBAR_ITEMS.map((item) => (
-                  <SidebarMenuItem key={item.title}>
+        {/* COLLAPSABLE */}
+        <Collapsible defaultOpen className="group/collapsible">
+          <SidebarGroup>
+            <SidebarGroupLabel asChild>
+              <CollapsibleTrigger>
+                Collapsable Group
+                <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180"/>
+              </CollapsibleTrigger>
+            </SidebarGroupLabel>
+            <CollapsibleContent>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <item.icon/>
-                        <span>{item.title}</span>
+                      <Link href="/#">
+                        <Projector/>
+                        See All Projects
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                ))
-              }
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href="/#">
+                        <Plus/>
+                        Add Project
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </CollapsibleContent>
+          </SidebarGroup>
+        </Collapsible>
 
+        {/* NESTED */}
         <SidebarGroup>
-          <SidebarGroupLabel>
-            App
-          </SidebarGroupLabel>
+          <SidebarGroupLabel>Nested Items</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {
-                SIDEBAR_ITEMS.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <item.icon/>
-                        <span>{item.title}</span>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href="/#">
+                    <Projector/>
+                    See All Projects
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuSub>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton asChild>
+                      <Link href="/#">
+                        <Plus/>
+                        Add Project
                       </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))
-              }
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton asChild>
+                      <Link href="/#">
+                        <Plus/>
+                        Add Category
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                </SidebarMenuSub>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -123,7 +159,7 @@ const AppSidebar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> John Doe <ChevronUp className={"ml-auto"} />
+                  <User2/> John Doe <ChevronUp className={"ml-auto"}/>
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
 
